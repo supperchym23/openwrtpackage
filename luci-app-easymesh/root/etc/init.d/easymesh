@@ -80,8 +80,8 @@ start(){
 		fi
 
 		if [ $ap_mode -eq 1 ]; then
+			uci set network.mb=interface		
 			uci set network.mb.ipaddr=$ipaddr
-			uci set network.mb=interface
 			uci set network.mb.ifname=bat0								 
 			uci set network.mb.netmask=$netmask
 			uci del_list network.mb.ifname='bat0'

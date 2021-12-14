@@ -171,7 +171,7 @@ function getinterfacelist(){
 	[ `ubus list|grep -i "network.interface."|grep -v "loopback"|grep -v "wan6"|wc -l` -eq "1" ] && ubus call `ubus list|grep "network.interface."|grep -v "loopback"` status && return
 }
 
-# 获取接口在线时间
+# 获取接口online time
 function getinterfaceuptime(){
 	getinterfacelist|grep \"uptime\"|sed $'s/\"uptime": //g'|sed $'s/\,//g'
 }
@@ -314,13 +314,13 @@ function get_client_usage(){
 				local time1=$(time_for_humans `expr ${time1} - ${time_up}`)
 				if [ -z "$title" ]; then
 					title="${ip_name} 流量异常"
-					content="${content}${str_splitline}${str_title_start} 设备流量异常${str_title_end}${str_linefeed}${str_tab}Client name ：${str_space}${str_space}${str_space}${str_space}${str_space}${ip_name}${str_linefeed}${str_tab}ClientIP： ${str_space}${str_space}${str_space}${str_space}${ip}${str_linefeed}${str_tab}ClientMAC：${str_space}${str_space}${str_space}${str_space}${mac}$ip_total${str_linefeed}${str_tab}一minute钟内流量： ${str_space}${str_space}${tmp_usage}${str_linefeed}${str_tab}在线时间： ${str_space}${str_space}${str_space}${str_space}${time1}"
+					content="${content}${str_splitline}${str_title_start} 设备流量异常${str_title_end}${str_linefeed}${str_tab}Client name ：${str_space}${str_space}${str_space}${str_space}${str_space}${ip_name}${str_linefeed}${str_tab}ClientIP： ${str_space}${str_space}${str_space}${str_space}${ip}${str_linefeed}${str_tab}ClientMAC：${str_space}${str_space}${str_space}${str_space}${mac}$ip_total${str_linefeed}${str_tab}一minute钟内流量： ${str_space}${str_space}${tmp_usage}${str_linefeed}${str_tab}online time： ${str_space}${str_space}${str_space}${str_space}${time1}"
 				elif ( echo "$title"|grep -q "流量异常" ); then
 					title="${ip_name} ${title}"
-					content="${content}${str_splitline}${str_tab}Client name ：${str_space}${str_space}${str_space}${str_space}${str_space}${ip_name}${str_linefeed}${str_tab}ClientIP： ${str_space}${str_space}${str_space}${str_space}${ip}${str_linefeed}${str_tab}ClientMAC：${str_space}${str_space}${str_space}${str_space}${mac}$ip_total${str_linefeed}${str_tab}一minute钟内流量： ${str_space}${str_space}${str_space}${tmp_usage}${str_linefeed}${str_tab}在线时间： ${str_space}${str_space}${str_space}${str_space}${time1}"
+					content="${content}${str_splitline}${str_tab}Client name ：${str_space}${str_space}${str_space}${str_space}${str_space}${ip_name}${str_linefeed}${str_tab}ClientIP： ${str_space}${str_space}${str_space}${str_space}${ip}${str_linefeed}${str_tab}ClientMAC：${str_space}${str_space}${str_space}${str_space}${mac}$ip_total${str_linefeed}${str_tab}一minute钟内流量： ${str_space}${str_space}${str_space}${tmp_usage}${str_linefeed}${str_tab}online time： ${str_space}${str_space}${str_space}${str_space}${time1}"
 				else
 					title="Device status changes"
-					content="${content}${str_splitline}${str_title_start} 设备流量异常${str_title_end}${str_linefeed}${str_tab}Client name ：${str_space}${str_space}${str_space}${str_space}${str_space}${ip_name}${str_linefeed}${str_tab}ClientIP： ${str_space}${str_space}${str_space}${str_space}${ip}${str_linefeed}${str_tab}ClientMAC：${str_space}${str_space}${str_space}${str_space}${mac}$ip_total${str_linefeed}${str_tab}一minute钟内流量： ${str_space}${str_space}${str_space}${tmp_usage}${str_linefeed}${str_tab}在线时间： ${str_space}${str_space}${str_space}${str_space}${time1}"
+					content="${content}${str_splitline}${str_title_start} 设备流量异常${str_title_end}${str_linefeed}${str_tab}Client name ：${str_space}${str_space}${str_space}${str_space}${str_space}${ip_name}${str_linefeed}${str_tab}ClientIP： ${str_space}${str_space}${str_space}${str_space}${ip}${str_linefeed}${str_tab}ClientMAC：${str_space}${str_space}${str_space}${str_space}${mac}$ip_total${str_linefeed}${str_tab}一minute钟内流量： ${str_space}${str_space}${str_space}${tmp_usage}${str_linefeed}${str_tab}online time： ${str_space}${str_space}${str_space}${str_space}${time1}"
 				fi
 			fi
 		done
@@ -506,7 +506,7 @@ function get_client(){
 	done < ${dir}ipAddress
 	fi
 cat>/usr/lib/lua/luci/view/serverchan/serverchan_client.htm<<EOF
-<h2><%:在线设备列表%></h2><div class="table" id="traffic"><div class="tr table-titles"><div class="th" id="thClient" style="width:17%"><%:Client name %></div><div class="th" id="thMAC" style="width:10%"><%:MAC%></div><div class="th" id="thIP" style="width:17%"><%:IP%></div><div class="th" id="thTotal" style="width:9%"><%:总计流量%></div><div class="th" id="thFirstSeen" style="width:15%"><%: 在线时间%></div></div>
+<h2><%:在线设备列表%></h2><div class="table" id="traffic"><div class="tr table-titles"><div class="th" id="thClient" style="width:17%"><%:Client name %></div><div class="th" id="thMAC" style="width:10%"><%:MAC%></div><div class="th" id="thIP" style="width:17%"><%:IP%></div><div class="th" id="thTotal" style="width:9%"><%:总计流量%></div><div class="th" id="thFirstSeen" style="width:15%"><%: online time%></div></div>
 $js_str
 </div>
 EOF
@@ -834,13 +834,13 @@ function down_send(){
 		local time1=$(time_for_humans `expr ${time1} - ${time_up}`)
 		if [ -z "$title" ]; then
 			title="${ip_name} 断开连接"
-			content="${content}${str_splitline}${str_title_start}Device disconnected ${str_title_end}${str_linefeed}${str_tab}Client name ：${str_space}${str_space}${str_space}${str_space}${str_space}${ip_name}${str_linefeed}${str_tab}ClientIP： ${str_space}${str_space}${str_space}${str_space}${ip}${str_linefeed}${str_tab}ClientMAC：${str_space}${str_space}${str_space}${str_space}${ip_mac}$ip_total${str_linefeed}${str_tab}在线时间： ${str_space}${str_space}${str_space}${str_space}${time1}"
+			content="${content}${str_splitline}${str_title_start}Device disconnected ${str_title_end}${str_linefeed}${str_tab}Client name ：${str_space}${str_space}${str_space}${str_space}${str_space}${ip_name}${str_linefeed}${str_tab}ClientIP： ${str_space}${str_space}${str_space}${str_space}${ip}${str_linefeed}${str_tab}ClientMAC：${str_space}${str_space}${str_space}${str_space}${ip_mac}$ip_total${str_linefeed}${str_tab}online time： ${str_space}${str_space}${str_space}${str_space}${time1}"
 		elif ( echo "$title"|grep -q "断开连接" ); then
 			title="${ip_name} ${title}"
-			content="${content}${str_splitline}${str_tab}Client name ：${str_space}${str_space}${str_space}${str_space}${str_space}${ip_name}${str_linefeed}${str_tab}ClientIP： ${str_space}${str_space}${str_space}${str_space}${ip}${str_linefeed}${str_tab}ClientMAC：${str_space}${str_space}${str_space}${str_space}${ip_mac}$ip_total${str_linefeed}${str_tab}在线时间： ${str_space}${str_space}${str_space}${str_space}${time1}"
+			content="${content}${str_splitline}${str_tab}Client name ：${str_space}${str_space}${str_space}${str_space}${str_space}${ip_name}${str_linefeed}${str_tab}ClientIP： ${str_space}${str_space}${str_space}${str_space}${ip}${str_linefeed}${str_tab}ClientMAC：${str_space}${str_space}${str_space}${str_space}${ip_mac}$ip_total${str_linefeed}${str_tab}online time： ${str_space}${str_space}${str_space}${str_space}${time1}"
 		else
 			title="Device status changes"
-			content="${content}${str_splitline}${str_title_start}Device disconnected ${str_title_end}${str_linefeed}${str_tab}Client name ：${str_space}${str_space}${str_space}${str_space}${str_space}${ip_name}${str_linefeed}${str_tab}ClientIP： ${str_space}${str_space}${str_space}${str_space}${ip}${str_linefeed}${str_tab}ClientMAC：${str_space}${str_space}${str_space}${str_space}${ip_mac}$ip_total${str_linefeed}${str_tab}在线时间： ${str_space}${str_space}${str_space}${str_space}${time1}"
+			content="${content}${str_splitline}${str_title_start}Device disconnected ${str_title_end}${str_linefeed}${str_tab}Client name ：${str_space}${str_space}${str_space}${str_space}${str_space}${ip_name}${str_linefeed}${str_tab}ClientIP： ${str_space}${str_space}${str_space}${str_space}${ip}${str_linefeed}${str_tab}ClientMAC：${str_space}${str_space}${str_space}${str_space}${ip_mac}$ip_total${str_linefeed}${str_tab}online time： ${str_space}${str_space}${str_space}${str_space}${time1}"
 		fi
 		echo "`date "+%Y-%m-%d %H:%M:%S"` ${disturb_text}设备 ${ip_name} ${ip} 断开连接 " >> ${logfile}
 	done
@@ -885,16 +885,16 @@ function cpu_load(){
 		[ -z "$cpu_wendu" ] && echo "`date "+%Y-%m-%d %H:%M:%S"`  【！！！】无法读取设备温度，请检查命令" >> ${logfile}
 
 		if [ `expr $cpu_wendu \> $temperature` -eq "1" ]; then
-			echo "`date "+%Y-%m-%d %H:%M:%S"` 【！！警报！！】 CPU 温度过高: ${cpu_wendu}" >> ${logfile}
+			echo "`date "+%Y-%m-%d %H:%M:%S"` 【！！警报！！】 CPU Temperature is too high: ${cpu_wendu}" >> ${logfile}
 		else
 			temperature_time=`date +%s`
 		fi
 
 		if [ "$((`date +%s`-$temperature_time))" -ge "300" ] && [ -z "$temperaturecd_time" ]; then
-			title="CPU 温度过高！"
+			title="CPU Temperature is too high！"
 			temperaturecd_time=`date +%s`
 			echo "`date "+%Y-%m-%d %H:%M:%S"` ${disturb_text} CPU 温 度过高: ${cpu_wendu}" >> ${logfile}
-			content="${content}${str_splitline}${str_title_start} CPU 温度过高${str_title_end}${str_linefeed}${str_tab}CPU 温度已连续五minute钟超过预设${str_linefeed}${str_tab}接下来一小 时不再提示${str_linefeed}${str_tab}当前温度：${cpu_wendu}℃"
+			content="${content}${str_splitline}${str_title_start} CPU Temperature is too high${str_title_end}${str_linefeed}${str_tab}CPU The temperature has been five consecutiveminuteClock exceeds preset${str_linefeed}${str_tab}No more prompts in the next hour${str_linefeed}${str_tab}Current Temperature：${cpu_wendu}℃"
 		elif [ ! -z "$temperaturecd_time" ] && [ "$((`date +%s`-$temperaturecd_time))" -ge "3300" ] ;then
 			unset temperaturecd_time
 		fi
@@ -921,7 +921,7 @@ function cpu_load(){
 			fi
 			cpucd_time=`date +%s`
 			echo "`date "+%Y-%m-%d %H:%M:%S"` ${disturb_text} CPU 负 载过高: ${cpu_fuzai}" >> ${logfile}
-			content="${content}${str_splitline}${str_title_start} CPU 负载过高${str_title_end}${str_linefeed}${str_tab}CPU 负载已连续五minute钟超过预设${str_linefeed}${str_tab}接下来一小 时不再提示${str_linefeed}${str_tab}当前负载：${cpu_fuzai}"
+			content="${content}${str_splitline}${str_title_start} CPU 负载过高${str_title_end}${str_linefeed}${str_tab}CPU 负载已连续五minuteClock exceeds preset${str_linefeed}${str_tab}No more prompts in the next hour${str_linefeed}${str_tab}当前负载：${cpu_fuzai}"
 			cputop
 		elif [ ! -z "$cpucd_time" ] && [ "$((`date +%s`-$cpucd_time))" -ge "3300" ] ;then
 			unset cpucd_time
@@ -1137,7 +1137,7 @@ function send(){
 		fi
 		( ! echo "$send_wanIP"|grep -q -w ${send_hostIP} ) && local send_content="${send_content}${str_linefeed}${str_tab}外网 ip 与接口 ip 不一致，你的 ip 不是公网 ip"
 		local interfaceuptime=`getinterfaceuptime`
-		[ ! -z "$interfaceuptime" ] && local wanstatustime=`getinterfaceuptime|awk -F. '{run_days=$1 / 86400;run_hour=($1 % 86400)/3600;run_minute=($1 % 3600)/60;run_second=$1 % 60;printf("在线时间：%d天%d时%dminute%dsecond",run_days,run_hour,run_minute,run_second)}'` && unset run_days run_hour run_minute run_second
+		[ ! -z "$interfaceuptime" ] && local wanstatustime=`getinterfaceuptime|awk -F. '{run_days=$1 / 86400;run_hour=($1 % 86400)/3600;run_minute=($1 % 3600)/60;run_second=$1 % 60;printf("online time：%d天%d时%dminute%dsecond",run_days,run_hour,run_minute,run_second)}'` && unset run_days run_hour run_minute run_second
 		local send_content="${send_content}${str_linefeed}${str_tab}${wanstatustime}"
 	fi
 

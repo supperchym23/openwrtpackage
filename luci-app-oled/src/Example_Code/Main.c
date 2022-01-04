@@ -64,7 +64,7 @@ int main(int argc, char* argv[])
 
 
     /* Initialize I2C bus and connect to the I2C Device */
-    if(init_i2c_dev(I2C_DEV0_PATH, SSD1306_OLED_ADDR) == 0)
+    if(init_i2c_dev(I2C_DEV1_PATH, SSD1306_OLED_ADDR) == 0)
     {
         printf("(Main)i2c-2: Bus Connected to SSD1306\r\n");
     }

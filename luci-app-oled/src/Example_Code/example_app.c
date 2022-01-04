@@ -59,7 +59,7 @@ SOFTWARE.
 #define FREQSIZE 8 
 #define FREQPATH "cat /sys/devices/system/cpu/cpu[04]/cpufreq/cpuinfo_cur_freq"
 //ip
-#define IPPATH "ifconfig br-lan|grep 'inet addr:'|cut -d: -f2|awk '{print $1}'"
+#define IPPATH "curl ip-adresim.app"
 #define IPSIZE 20
 //netspeed
 #define NETPATH "cat /tmp/netspeed"

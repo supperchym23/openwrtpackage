@@ -66,6 +66,7 @@ ln -sf /sbin/ip /usr/bin/ip
 chmod 0755 /etc/init.d/*
 chmod 0755 /usr/bin/serverchan/serverchan
 chmod 0755 /usr/sbin/netspeed
+chmod 0755 /etc/mwan3helper/*
 
 rm -rf /tmp/luci-*cache
 

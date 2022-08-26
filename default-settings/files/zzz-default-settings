@@ -62,6 +62,8 @@ ln -sf /sbin/ip /usr/bin/ip
 /etc/init.d/softethervpnclient disable 2>/dev/null
 /etc/init.d/haproxy disable 2>/dev/null
 /etc/init.d/kcptun disable 2>/dev/null
+/etc/init.d/dnscrypt-proxy disable 2>/dev/null
+/etc/init.d/adguardhome disable 2>/dev/null
 
 chmod 0755 /etc/init.d/*
 chmod 0755 /usr/bin/serverchan/serverchan

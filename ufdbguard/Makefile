@@ -17,7 +17,7 @@ define Package/ufdbguard
   SECTION:=net
   CATEGORY:=Network
   SUBMENU:=Web Servers/Proxies
-  TITLE:=ufdbguard
+  TITLE:=ufdbGuard
   URL:=http://www.urlfilterdb.com/
 endef
 

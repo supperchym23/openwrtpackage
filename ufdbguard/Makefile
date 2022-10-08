@@ -17,7 +17,7 @@ define Package/ufdbguard
   SECTION:=net
   CATEGORY:=Network
   SUBMENU:=Web Servers/Proxies
-  TITLE:=URL filter for the Squid web proxy
+  TITLE:=ufdbguard
   URL:=http://www.urlfilterdb.com/
 endef
 

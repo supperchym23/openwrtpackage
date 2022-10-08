@@ -13,7 +13,7 @@ PKG_MD5SUM:=92632ea336f07b4480f3ff103be47585
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/ufdbguard
+define Package/ufdbGuard
   SECTION:=net
   CATEGORY:=Network
   SUBMENU:=Web Servers/Proxies

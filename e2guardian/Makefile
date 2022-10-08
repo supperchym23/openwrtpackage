@@ -76,6 +76,8 @@ define Package/e2guardian/install
 	PKG_INSTALL_DIR="$(PKG_BUILD_DIR)"/install
 	$(CP) -r $(PKG_INSTALL_DIR)/etc/e2guardian/* $(1)/etc/e2guardian/
 	$(CP) -r $(PKG_INSTALL_DIR)/usr/share/e2guardian/* $(1)/usr/share/e2guardian/
+	$(INSTALL_DIR) $(1)/etc/init.d/
+	$(INSTALL_BIN) ./files/e2guardian.init $(1)/etc/init.d/e2guardian	
 endef
 
 

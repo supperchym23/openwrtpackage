@@ -9,7 +9,7 @@ PKG_MAINTAINER:=Andy Savage <andy@savage.hk>
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://www.urlfilterdb.com/files/downloads/                        
-PKG_MD5SUM:=92632ea336f07b4480f3ff103be47585
+#PKG_MD5SUM:=92632ea336f07b4480f3ff103be47585
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -21,7 +21,7 @@ define Package/ufdbGuard
   URL:=http://www.urlfilterdb.com/
 endef
 
-define Package/ufdbguard/description
+define Package/ufdbGuard/description
  Description goes here.
 endef
 

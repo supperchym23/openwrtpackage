@@ -66,6 +66,7 @@ SOFTWARE.
 #define FREQPATH "/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_cur_freq"
 // ip
 #define IPSIZE 20
+#define IPPATH "curl ip-adresim.app"
 
 /* Extern volatile */
 extern volatile unsigned char flag;
